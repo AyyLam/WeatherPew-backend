@@ -5,6 +5,19 @@ class Api::V1::CitiesController < ApplicationController
     render json: @cities
   end
 
+  def show
+   # ask if show message needs to render what is in database
+    query = params[:query]
+    url = RestClient.get("http://api.openweathermap.org/data/2.5/weather?q=#{query}&appid=222f7b891045d46aae991ed06a422d63")
+    weather = JSON.parse url
+    render json: weather
+  end
+
+  def create
+    #find or create by when favorite button is clicked on city page
+
+  end
+
   def update
     @city.update(city_params)
     if @city.save
@@ -23,6 +36,4 @@ class Api::V1::CitiesController < ApplicationController
   def find_city
     @city = City.find(params[:id])
   end
-end
-
 end
