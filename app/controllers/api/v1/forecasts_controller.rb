@@ -17,7 +17,7 @@ class Api::V1::ForecastsController < ApplicationController
   private
 
   def forecast_params
-    params.permit(:title, :content)
+    params.permit(:temp, :wind, :temp_min, :temp_max)
   end
 
   def find_forecast

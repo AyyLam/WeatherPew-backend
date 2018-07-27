@@ -17,7 +17,7 @@ class Api::V1::CitiesController < ApplicationController
   private
 
   def city_params
-    params.permit(:title, :content)
+    params.permit(:name)
   end
 
   def find_city
