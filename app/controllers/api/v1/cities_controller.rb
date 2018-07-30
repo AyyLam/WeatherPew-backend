@@ -12,7 +12,7 @@ class Api::V1::CitiesController < ApplicationController
 
     query = params[:id]
     # binding.pry
-    url = RestClient.get("https://api.weatherbit.io/v2.0/forecast/daily?city=#{query}&key=2aae1ad95d074ef69f7611fc50deb833")
+    url = RestClient.get("https://api.weatherbit.io/v2.0/forecast/daily?city=#{query}&key=2aae1ad95d074ef69f7611fc50deb833&units=I")
     weather = JSON.parse url
     render json: weather
   end
