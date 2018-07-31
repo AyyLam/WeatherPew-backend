@@ -9,17 +9,20 @@ class Api::V1::CitiesController < ApplicationController
 
   def show
    # ask if show message needs to render what is in database
-
-    query = params[:id]
-    # binding.pry
-    url = RestClient.get("https://api.weatherbit.io/v2.0/forecast/daily?city=#{query}&key=2aae1ad95d074ef69f7611fc50deb833&units=I")
-    weather = JSON.parse url
-    render json: weather
+   @city = City.find_by(name: params[:id])
+   render json: @city, status: :accepted
   end
 
   def create
-    #find or create by when favorite button is clicked on city page
 
+    #find or create by when favorite button is clicked on city page
+    @city = City.find_or_create_by(name: params[:name], maxTemp: params[:maxTemp], minTemp: params[:minTemp])
+
+    if @city.save
+      render json: @city, status: :created
+    else
+      render json: @city.errors, status: :unprocessable_entity
+    end
   end
 
   def update

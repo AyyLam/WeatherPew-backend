@@ -5,6 +5,15 @@ class Api::V1::ForecastsController < ApplicationController
     render json: @forecasts
   end
 
+  def show
+    query = params[:id]
+    # binding.pry
+    url = RestClient.get("https://api.weatherbit.io/v2.0/forecast/daily?city=#{query}&key=89eacc89e0f940338f51398f9abd6006&units=I")
+    weather = JSON.parse url
+    render json: weather
+
+  end
+
   def update
     @forecast.update(forecast_params)
     if @forecast.save
