@@ -16,7 +16,7 @@ class Api::V1::CitiesController < ApplicationController
   def create
 
     #find or create by when favorite button is clicked on city page
-    @city = City.find_or_create_by(name: params[:name], maxTemp: params[:maxTemp], minTemp: params[:minTemp])
+    @city = City.find_or_create_by(name: params[:name], maxTemp: params[:maxTemp], minTemp: params[:minTemp], temp: params[:temp], wind_spd: params[:wind_spd], pop: params[:pop], datetime: params[:datetime], rh: params[:rh], country_code: params[:country_code], state_code: params[:state_code])
 
     if @city.save
       render json: @city, status: :created

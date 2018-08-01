@@ -19,6 +19,13 @@ ActiveRecord::Schema.define(version: 2018_07_30_200010) do
     t.string "name"
     t.string "maxTemp"
     t.string "minTemp"
+    t.string "temp"
+    t.string "wind_spd"
+    t.string "pop"
+    t.string "datetime"
+    t.string "rh"
+    t.string "country_code"
+    t.string "state_code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
